@@ -167,8 +167,6 @@ const gameLose = (divSelected) =>{
 };
 
 const territoryExpasion = (playInfo, i, j) => {
-    /* console.log(gameMatrix);
-    console.log(`i = ${i} j = ${j}`); */
     if (playInfo.selected || playInfo.flagged) return;
     qntCellsSelected++;
 
@@ -316,7 +314,6 @@ const getCustomDet = (e) => {
     gameSize.custom.bombsQnt = formData.get('mines');
 
     forminfo_form.hidden = true;
-    console.log(gameSize);
     createMineCells(gameSize.custom, "custom");
 };
 
@@ -340,7 +337,6 @@ const changeColor = (div, test) => {
     forminfo_form.hidden = true;
 };
 beginner_div.addEventListener('click', () => {
-    console.log(mineOptions_div);
     changeColor(beginner_div);
     createMineCells(gameSize.beginner, "beginner");
 });
