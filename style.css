@@ -1,0 +1,180 @@
+*, *::after, *::before {
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+	cursor: default;
+    user-select: none;
+}
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+    background: linear-gradient(to right, #d3cce3, #e9e4f0);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Fonts */
+@font-face {
+    font-family: digitalSeven;
+    src: url(./fonts/digital-7.ttf);
+}
+@font-face {
+    font-family: Limelight;
+    src: url(./fonts/Limelight-Regular.ttf);
+}
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
+.mine-options {
+    height: 50px;
+    width: 100%;
+    background-color: #353a40;
+    font-weight: bold;
+    border-bottom: 3px inset black;
+    display: flex;
+    align-items: center;
+    font-family: 'Limelight', cursive;
+    color: rgb(197, 193, 193);
+}
+.mine-options div{
+    margin-left: 30px;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.mine-options form {
+    margin-left: 50px;
+    color: white;
+}
+.mine-options label {
+    padding-left: 15px;
+}
+.mine-options input[type='submit'] {
+    margin-left: 15px;
+}
+
+input[type='number']{
+    width: 50px;
+} 
+
+.space-config {
+    flex-grow: 1;
+    height: 100%;
+    grid-row: 3;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* PARTE DO DISPLAY DO JOGO */
+.mine-container {
+    background-color: #c0c0c0;
+    border: 15px solid #c6c6c6;
+    outline: 10px outset rgb(250, 244, 244);
+    display: grid;
+    grid-template-rows: 80px 10px 1fr;
+}
+/* Tela de detalhes do jogo */
+.display {
+    background-color: #c0c0c0;
+    border: 5px inset white;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.count {
+    font-family: digitalSeven, sans-serif;
+    color: #66ff99;
+    font-size: 55px;
+    margin:0 20px;
+    height: 52px;
+    width: 80px;
+    border: 3px inset white;
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+}
+.time {
+    width: 25px;
+}
+.bomb {
+    width: 25px;
+}
+.repeat-game img {
+    box-sizing: border-box;
+    height: 50px;
+    padding: 3px;
+    outline: 5px outset rgb(250, 244, 244);
+    cursor: pointer;
+}
+.repeat-game:hover {
+    filter: brightness(110%);
+}
+
+
+
+/* Tela do jogo */
+.game {
+    grid-row: 3;
+    /* outline: 5px solid #c6c6c6; */
+    display: grid;
+    grid-template-columns: repeat(var(--columnsQnt), 36px);
+    grid-template-rows: repeat(var(--rowsQnt), 36px);
+    border: 6px inset;
+    border-color:#c6c6c6 white;
+}
+.mine-cells {
+    background-color: #c6c6c6;
+    border: 4px outset;
+    border-color:white #c6c6c6;
+    outline: 0.3px solid rgb(90, 90, 90);
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+}
+.mine-cells:hover {
+    filter: brightness(110%);
+}
+
+.mine-cells img {
+    cursor: default;
+    position: absolute;
+    width: 100%;
+}
+.mine-cells .flag{
+    cursor: pointer;
+} 
+
+/* Form button style: */
+.myButton {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: Limelight;
+	font-size:15px;
+	padding:5px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+    text-shadow: 2px 2px black;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
