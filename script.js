@@ -198,7 +198,7 @@ const verifyWinning = () => {
     for(let i = 0; i < gameMatrix.length; i++) {
         for(let j = 0; j < gameMatrix[i].length; j++) {
             if (gameMatrix[i][j].bomb && !gameMatrix[i][j].flagged){
-                gameMatrix[i][j].referentBtn.innerHTML = '<img src="./images/flag.svg" class="flag">';
+                gameMatrix[i][j].referentBtn.innerHTML = '<img src="./images/Flag.svg" class="flag">';
                 qntFlagsRemain--;
                 attDisplayFlagText();
             }
@@ -301,7 +301,7 @@ const insertFlag = (idCell) => {
             attDisplayFlagText();
             return;
         }
-        playInfo.referentBtn.innerHTML = '<img src="./images/flag.svg" class="flag">';
+        playInfo.referentBtn.innerHTML = '<img src="./images/Flag.svg" class="flag">';
         playInfo.referentBtn.style.border = '0';
         playInfo.flagged = true;
         qntFlagsRemain--;
