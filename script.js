@@ -7,14 +7,16 @@ const repeatGame_div = document.querySelector('.repeat-game img');
 const forminfo_form = document.getElementById('formAction');
 const mineOptions_div = document.querySelector('.mine-options');
 const mineContainer_div = document.querySelector('.mine-container');
+
 //Constantes do time display
 const timeUnidade_div = document.querySelector('.time.unidades');
 const timeDezena_div = document.querySelector('.time.dezenas');
 const timeCentena_div = document.querySelector('.time.centenas');
-//Constantes do bomb display
-const bombUnidade_div = document.querySelector('.bomb.unidades');
-const bombDezena_div = document.querySelector('.bomb.dezenas');
-const bombCentena_div = document.querySelector('.bomb.centenas');
+
+//Constantes do flag bomb display
+const flagBombUnidade_div = document.querySelector('.bomb.unidades');
+const flagBombDezena_div = document.querySelector('.bomb.dezenas');
+const flagBombCentena_div = document.querySelector('.bomb.centenas');
 
 forminfo_form.hidden = true;
 
@@ -86,6 +88,7 @@ const createAroundBombs = () => {
     for (let i = 0; i < gameMatrix.length; i++) {
         for (let j = 0; j < gameMatrix[i].length; j++) {
             aroundCount = 0;
+            //Essa função percorre os arredores de uma celula do jogo e verifica em quais celulas adjacentes existem bombas, e então essa quantidade de bombas adjantes é incluida a matriz do jogo.
             for (let k = i - 1; k < i + 2; k++) {
                 for (let l = j - 1; l < j + 2; l++) {
                     if (k >= 0 && l >= 0 && k <= gameMatrix.length-1 && l <= gameMatrix[i].length-1) {
@@ -103,6 +106,7 @@ const createAroundBombs = () => {
 const randomBombs = (infoCell) => {
     let row = 0;
     let column = 0;
+    //Gera a matriz do jogo para gameMatrix
     createMatrix(infoCell.rowsQnt, infoCell.columnsQnt);
 
     qntMineCells = gameMatrix.length * gameMatrix[0].length;
@@ -270,11 +274,11 @@ const attDisplayFlagText = () => {
         document.querySelector('.count.bombs').style.color = 'red';
     } else document.querySelector('.count.bombs').style.color = '#66ff99';
 
-    bombUnidade_div.textContent = Math.floor(flags%10);
+    flagBombUnidade_div.textContent = Math.floor(flags%10);
     flags /= 10;
-    bombDezena_div.textContent = Math.floor(flags%10);
+    flagBombDezena_div.textContent = Math.floor(flags%10);
     flags /= 10;
-    bombCentena_div.textContent = Math.floor(flags%10);
+    flagBombCentena_div.textContent = Math.floor(flags%10);
 };
 const insertFlag = (idCell) => {
     if (!gameStarted) return;
@@ -356,13 +360,14 @@ repeatGame_div.addEventListener('click', () => createMineCells(gameSize[selectMo
 //Form details
 
 //EventListener function para receber as unidades do campo minado
-const leftEventRec = (e) => verifyPlay(e.path[0].id);
+const leftEventRec = (e) => verifyPlay(e.target.id);
 const rightEventRec = (e) => {
     e.preventDefault();
-    if (e.path[0].id === ''){
-        insertFlag(e.path[1].id);
+    if (e.target.id === ''){
+        insertFlag(e.composedPath()[1].id);
+        //if deprecated, o metodo path não existe mais, foi substituido pelo composedPath mas não testei a validade
     } else {
-        insertFlag(e.path[0].id);
+        insertFlag(e.target.id);
     }
 };
 function recognizeBoard() {
@@ -374,6 +379,5 @@ function recognizeBoard() {
 };
 
 
-
-//e.path.attributes.id
+//Jogo inicia no modo begginer.
 createMineCells(gameSize.beginner, "beginner");
